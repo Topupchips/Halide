@@ -30,8 +30,8 @@ export function StatusBar() {
       <span>{session.hasDoc ? `${session.width} × ${session.height}` : "No plate"}</span>
       <span>{session.hasDoc ? `${Math.round(session.zoom * 100)}%` : ""}</span>
       <span ref={cursorRef}>—</span>
-      <span className="min-w-0 flex-1 truncate text-copper">{session.notice ?? session.name}</span>
-      <span className="hidden sm:inline">{session.past.length ? "Edited" : "Saved in this tab"}</span>
+      <span className="min-w-0 flex-1 truncate text-copper">{session.notice ?? (session.hasDoc ? session.name : "No plate open")}</span>
+      <span className="hidden sm:inline">{session.hasDoc ? (session.past.length ? "Edited" : "Saved in this tab") : ""}</span>
     </footer>
   );
 }

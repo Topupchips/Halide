@@ -177,6 +177,9 @@ function LayersPanel() {
         </div>
       ) : null}
       <ScrollArea className="min-h-0 flex-1">
+        {session.layers.length === 0 ? (
+          <p className="px-3 py-8 text-center text-[13px] leading-5 text-muted-foreground">Open a plate to stack layers.</p>
+        ) : null}
         <ul className="flex flex-col-reverse p-2">
           {session.layers.map((layer) => (
             <li key={layer.id}>

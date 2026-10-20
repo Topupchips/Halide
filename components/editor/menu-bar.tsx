@@ -24,11 +24,12 @@ export function MenuBar() {
   const disabled = !session.hasDoc;
 
   return (
-    <header className="flex h-9 shrink-0 items-center gap-1 border-b border-white/10 bg-panel px-2">
-      <div className="mr-1 flex items-center gap-2 px-1 text-copper">
+    <header className="flex h-9 shrink-0 items-center border-b border-white/10 bg-panel px-1">
+      <div className="mr-1 flex shrink-0 items-center gap-2 px-1 text-copper">
         <Mark className="size-4" />
-        <span className="text-[13px] font-semibold tracking-[0.16em] text-foreground">HALIDE</span>
+        <span className="hidden text-[13px] font-semibold tracking-[0.16em] text-foreground sm:inline">HALIDE</span>
       </div>
+      <nav className="flex min-w-0 flex-1 items-center overflow-x-auto">
       <Menu label="File">
         <Item label="New…" shortcut={`${ui.mod}N`} onSelect={() => ui.setDialog({ type: "new" })} />
         <Item label="Open…" shortcut={`${ui.mod}O`} onSelect={ui.openFile} />
@@ -103,7 +104,8 @@ export function MenuBar() {
         <DropdownMenuSeparator />
         <Item label="Keyboard shortcuts" shortcut="?" onSelect={() => ui.setDialog({ type: "shortcuts" })} />
       </Menu>
-      <div className="ml-auto lg:hidden">
+      </nav>
+      <div className="shrink-0 lg:hidden">
         <Button variant="ghost" size="sm" onClick={() => ui.setPanels(true)}>
           Panels
         </Button>
@@ -116,7 +118,7 @@ function Menu({ label, children }: { label: string; children: ReactNode }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="h-7 px-2 text-[13px] font-normal">
+        <Button variant="ghost" size="sm" className="h-7 px-1 text-[13px] font-normal sm:px-2">
           {label}
         </Button>
       </DropdownMenuTrigger>
